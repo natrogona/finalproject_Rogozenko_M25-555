@@ -1,0 +1,48 @@
+[tool.poetry]
+name = "finalproject-rogozenko-m25-555"
+version = "0.1.0"
+description = "Currency trading simulation platform"
+authors = ["Rogozenko M25-555"]
+readme = "README.md"
+packages = [{include = "valutatrade_hub"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+prettytable = "^3.16.0"
+requests = "^2.32.5"
+python-dotenv = "^1.2.1"
+
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.14.3"
+
+[tool.poetry.scripts]
+project = "valutatrade_hub.cli.interface:main"
+
+[tool.valutatrade]
+# Имена файлов базы данных
+users_file = "users.json"
+portfolios_file = "portfolios.json"
+rates_file = "rates.json"
+
+# Настройки приложения
+base_currency = "USD"
+min_password_length = 4
+max_username_length = 50
+
+# Настройки отображения
+decimal_places = 4
+
+# Настройки кеша курсов (в секундах)
+rates_cache_ttl = 3600  # 1 час
+
+# Настройки логирования
+log_level = "INFO"
+log_file = "valutatrade.log"
+log_format = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+log_max_bytes = 10485760  # 10MB
+log_backup_count = 5
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
